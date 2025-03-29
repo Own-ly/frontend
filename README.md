@@ -20,7 +20,70 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Project Structure
+
+The project structure is organized as follows:
+
+```
+/home/marcus/nextjs-xion-abstraxion-ownly
+├── .eslintrc.json          # ESLint configuration
+├── .gitignore              # Git ignore file
+├── next.config.js          # Next.js configuration
+├── package-lock.json       # Dependency lock file
+├── package.json            # Project dependencies & scripts
+├── postcss.config.js       # PostCSS configuration
+├── README.md               # Project documentation
+├── tailwind.config.ts      # Tailwind CSS configuration
+├── tsconfig.json           # TypeScript configuration
+├── public/                 # Static assets
+│   ├── images/             # Property images, icons, etc.
+│   ├── logos/              # Branding assets
+│   ├── next.svg            # Next.js logo
+│   └── vercel.svg          # Vercel logo
+└── src/
+    ├── app/                 # Main application directory
+    │   ├── favicon.ico      # Favicon for the app
+    │   ├── globals.css      # Global CSS styles
+    │   ├── layout.tsx       # Root layout with consistent UI
+    │   ├── page.tsx         # Main landing page
+    │   ├── properties/      # Property listing and details
+    │   │   ├── page.tsx     # List all properties
+    │   │   ├── [id]/page.tsx  # Property details page
+    │   ├── marketplace/     # Marketplace for buying/selling shares
+    │   │   ├── page.tsx     # Listings page
+    │   ├── rental-income/   # Rental income distribution
+    │   │   ├── page.tsx     # Rental income dashboard
+    │   ├── dao/             # Governance voting
+    │   │   ├── page.tsx     # DAO governance page
+    │   ├── portfolio/       # User holdings and transactions
+    │   │   ├── page.tsx     # Portfolio overview
+    │   ├── api/             # API handlers for blockchain interactions
+    │   │   ├── properties.ts  # Fetch properties
+    │   │   ├── marketplace.ts # Handle share buying/selling
+    │   │   ├── rental.ts      # Handle rental payouts
+    │   │   ├── dao.ts         # Handle DAO voting
+    ├── components/           # Reusable UI components
+    │   ├── Header.tsx        # Navigation bar
+    │   ├── Footer.tsx        # Footer section
+    │   ├── WalletConnect.tsx # Connect to XION Meta Accounts
+    │   ├── PropertyCard.tsx  # Display property listings
+    │   ├── SharePurchase.tsx # Modal for buying shares
+    │   ├── RentalChart.tsx   # Rental income analytics
+    │   ├── DAOProposal.tsx   # Voting interface
+    ├── hooks/                # Custom hooks for blockchain data
+    │   ├── useProperties.ts
+    │   ├── useMarketplace.ts
+    │   ├── useRental.ts
+    │   ├── useDAO.ts
+    ├── context/              # Global state management (Zustand/Context API)
+    │   ├── UserContext.ts
+    │   ├── BlockchainContext.ts
+    ├── services/             # Backend API and blockchain integration
+    │   ├── xion.ts           # XION Meta Accounts integration
+    │   ├── cosmwasm.ts       # Interact with CosmWasm smart contracts
+    ├── utils/                # Helper functions
+    │   ├── format.ts         # Formatting utilities
+    │   ├── blockchain.ts     # Blockchain transaction utilities
 
 To learn more about Next.js, take a look at the following resources:
 
