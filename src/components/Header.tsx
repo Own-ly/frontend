@@ -4,18 +4,15 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { WalletIcon, HomeIcon, BuildingOfficeIcon, UserIcon, BellIcon } from '@heroicons/react/24/outline';
-import { useAbstraxionAccount, Abstraxion } from '@burnt-labs/abstraxion';
+import { useAbstraxionAccount, useModal, Abstraxion } from '@burnt-labs/abstraxion';
+import { Button } from '@burnt-labs/ui';
 
 const Header = () => {
   const { data: account } = useAbstraxionAccount();
-  const [showModal, setShowModal] = useState(false);
+  const [, setShow] = useModal();
   const pathname = usePathname();
 
-  const connectWallet = () => {
-    setShowModal(true);
-  };
-
-  const isLoggedIn = !!account;
+  const isLoggedIn = !!account?.bech32Address;
   const walletAddress = account?.bech32Address 
     ? `${account.bech32Address.slice(0, 6)}...${account.bech32Address.slice(-4)}` 
     : '';
@@ -59,24 +56,21 @@ const Header = () => {
                   </div>
                 </div>
               ) : (
-                <button 
-                  onClick={connectWallet}
-                  className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                <Button
+                  onClick={() => setShow(true)}
+                  structure="base"
+                  className="ml-4"
                 >
                   <WalletIcon className="h-5 w-5 mr-1" />
                   Connect Wallet
-                </button>
+                </Button>
               )}
             </div>
           </div>
         </div>
       </header>
 
-      {showModal && (
-        <Abstraxion 
-          onClose={() => setShowModal(false)}
-        />
-      )}
+      <Abstraxion onClose={() => setShow(false)} />
     </>
   );
 };
