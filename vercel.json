@@ -3,12 +3,20 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/next"
+      "use": "@vercel/next",
+      "config": {
+        "nodeVersion": "23.x",
+        "installCommand": "npm install",
+        "buildCommand": "npm run build",
+        "outputDirectory": ".next"
+      }
     }
   ],
-  "build": {
-    "env": {
-      "NODE_VERSION": "23.x"
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1",
+      "continue": true
     }
-  }
+  ]
 }

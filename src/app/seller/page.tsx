@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { PlusIcon, PencilIcon, TrashIcon, CameraIcon } from '@heroicons/react/24/outline';
@@ -27,6 +27,7 @@ export default function SellerProfile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
   
   // Form state for new property

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '../../components/Header';
@@ -18,7 +19,7 @@ type Property = {
   id: number;
   name: string;
   location: string;
-  image: any; 
+  image: StaticImageData;
   totalShares: number;
   sharesAvailable: number;
   pricePerShare: number;
